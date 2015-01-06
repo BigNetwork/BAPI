@@ -4,6 +4,6 @@ class NewsPost < ActiveRecord::Base
   self.primary_key = "ID"
 
   has_many :comments, foreign_key: "newsPostID"
-  has_one :author, foreign_key: "userID", class_name: "User"
+  belongs_to :author, foreign_key: "authorID", class_name: "User"
 
 end

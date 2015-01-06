@@ -5,4 +5,9 @@ class EventsController < ActionController::API
     render :json => @events
   end
 
+  def show
+    @event = Event.find(params[:id])
+    render :json => @event
+  end
+
 end

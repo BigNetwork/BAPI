@@ -22,5 +22,15 @@ module Bapi
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Disable root element in serializers (i.e. JSON output):
+    ActiveSupport.on_load(:active_model_serializers) do
+      # Disable for all serializers (except ArraySerializer)
+      ActiveModel::Serializer.root = false
+ 
+      # Disable for ArraySerializer
+      ActiveModel::ArraySerializer.root = false
+    end
+  
   end
 end
